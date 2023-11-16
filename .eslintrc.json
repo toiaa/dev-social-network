@@ -26,6 +26,12 @@
     "semi": ["warn", "never"],
     "no-unused-vars": "off",
     "no-console": "warn",
+    "camelcase": [
+      {
+        "ignoreImports": true
+      },
+      "error"
+    ],
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/no-unused-vars": [
       "warn",
