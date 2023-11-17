@@ -7,6 +7,8 @@
     "prettier"
   ],
   "rules": {
-    "camelcase": "off"
+    "camelcase": "off",
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"]
   }
 }
