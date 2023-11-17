@@ -1,70 +1,58 @@
-"use client";
-import React from "react";
-import { useTheme } from "@/context/ThemeProvider";
-import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarShortcut,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
-import Image from "next/image";
-import { THEMES } from "@/constants";
+'use client'
+import React from 'react'
+import { useTheme } from '@/context/ThemeProvider'
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarTrigger } from '@/components/ui/menubar'
+import Image from 'next/image'
+import { THEMES } from '@/constants'
 function Theme() {
-  const { mode, setMode } = useTheme();
+  const { mode, setMode } = useTheme()
   return (
-    <Menubar className="relative border-none bg-transparent shadow-none">
+    <Menubar className='relative border-none bg-transparent shadow-none'>
       <MenubarMenu>
-        <MenubarTrigger className="focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200">
-          {mode === "light" ? (
+        <MenubarTrigger className='focus:bg-light-900 data-[state=open]:bg-light-900 dark:focus:bg-dark-200 dark:data-[state=open]:bg-dark-200'>
+          {mode === 'light' ? (
             <Image
-              src="/assets/icons/sun.svg"
-              alt="sun in light mode"
+              src='/assets/icons/sun.svg'
+              alt='sun in light mode'
               width={20}
               height={20}
-              className="active-theme"
+              className='active-theme'
             />
           ) : (
             <Image
-              src="/assets/icons/moon.svg"
-              alt="moon in dark mode"
+              src='/assets/icons/moon.svg'
+              alt='moon in dark mode'
               width={20}
               height={20}
-              className="active-theme"
+              className='active-theme'
             />
           )}
         </MenubarTrigger>
-        <MenubarContent className="absolute right-[-3rem] mt-3 min-w-[120px]rounded border py-2 dark:border-dark-400 dark:bg-dark-300">
+        <MenubarContent className='absolute right-[-3rem] mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300'>
           {THEMES.map((item) => (
             <MenubarItem
               key={item.value}
               onClick={() => {
-                setMode(item.value);
-                if (item.value !== "system") {
-                  localStorage.theme = item.value;
+                setMode(item.value)
+                if (item.value !== 'system') {
+                  localStorage.theme = item.value
                 } else {
-                  localStorage.removeItem("theme");
+                  localStorage.removeItem('theme')
                 }
               }}
-              className="flex items-center gap-4 px-2.5 py-2 dark:focus:bg-dark-400"
-            >
+              className='flex items-center gap-4 px-2.5 py-2 dark:focus:bg-dark-400'>
               <Image
                 src={item.icon}
                 alt={item.value}
                 height={16}
                 width={16}
-                className={`${mode === item.value ? "active-theme" : ""}`}
+                className={`${mode === item.value ? 'active-theme' : ''}`}
               />
               <p
                 className={`body-semibold text-light-500 ${
-                  mode === item.value
-                    ? "text-primary-500"
-                    : "text-dark100_light900"
+                  mode === item.value ? 'text-primary-500' : 'text-dark100_light900'
                 }
-            }`}
-              >
+            `}>
                 {item.label}
               </p>
             </MenubarItem>
@@ -72,7 +60,7 @@ function Theme() {
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
-  );
+  )
 }
 
-export default Theme;
+export default Theme
