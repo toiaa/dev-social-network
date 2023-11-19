@@ -1,21 +1,29 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import RenderTag from '../RenderTag'
 
 function RightSideBar() {
-  const TopQuestions = [
+  const topQuestions = [
     { _id: 1, title: 'Is it only me or the font is bolder than necessary?' },
     { _id: 2, title: 'Is it only me or the font is bolder than necessary?' },
     { _id: 3, title: 'Is it only me or the font is bolder than necessary?' },
     { _id: 4, title: 'Is it only me or the font is bolder than necessary?' },
     { _id: 5, title: 'Is it only me or the font is bolder than necessary?' },
   ]
+  const popularTags = [
+    { _id: 1, name: 'javascript', totalQuestions: 2 },
+    { _id: 2, name: 'next', totalQuestions: 4 },
+    { _id: 3, name: 'css', totalQuestions: 3 },
+    { _id: 4, name: 'react', totalQuestions: 1 },
+    { _id: 5, name: 'typescript', totalQuestions: 5 },
+  ]
   return (
     <section className='background-light900_dark200 light-border custom-scrollbar fixed inset-y-0 right-0 flex min-h-screen flex-col overflow-y-auto border-l p-6 pt-36 shadow-light-300 dark:shadow-none max-xl:hidden lg:w-[350px]'>
       <div className=''>
         <h3 className='text-dark200_light900 h3-bold'>Top Questions</h3>
         <div className='mt-7 flex w-full flex-col gap-[30px]'>
-          {TopQuestions.map((question) => {
+          {topQuestions.map((question) => {
             return (
               <Link
                 href={`/questions/${question._id}`}
@@ -35,7 +43,14 @@ function RightSideBar() {
         </div>
       </div>
       <div className='mt-16'>
-        <p className='text-dark200_light900 h3-bold'>Popular Tags</p>
+        <h3 className='text-dark200_light900 h3-bold'>Popular Tags</h3>
+        <div className=' mt-7 flex flex-col gap-4'>
+          {popularTags.map((tag) => {
+            return (
+              <RenderTag key={tag._id} _id={tag._id} name={tag.name} totalQuestions={tag.totalQuestions} showCount />
+            )
+          })}
+        </div>
       </div>
     </section>
   )
