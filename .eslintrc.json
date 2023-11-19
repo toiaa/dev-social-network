@@ -3,9 +3,12 @@
     "next/core-web-vitals",
     "standard",
     "plugin:tailwindcss/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "rules": {
-    "camelcase": [{ "ignoreImports": true }]
+    "camelcase": "off",
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"]
   }
 }
