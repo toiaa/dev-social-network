@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Sheet, SheetClose, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import Link from 'next/link'
-import { SignedOut } from '@clerk/nextjs'
+import { SignOutButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { sidebarLinks } from '@/constants'
 import { usePathname } from 'next/navigation'
@@ -77,6 +77,13 @@ const MobileNav = () => {
               </SheetClose>
             </div>
           </SignedOut>
+          <SignedIn>
+            <SignOutButton>
+              <Button className='small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none'>
+                <p>Log Out</p>
+              </Button>
+            </SignOutButton>
+          </SignedIn>
         </div>
       </SheetContent>
     </Sheet>
