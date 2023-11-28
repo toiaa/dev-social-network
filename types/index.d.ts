@@ -53,3 +53,20 @@ export interface RenderTagProps {
   totalQuestions: number
   showCount: boolean
 }
+
+export interface CustomInputProps {
+  route: string
+  iconPosition: string
+  imgSrc: string
+  placeholder: string
+  otherClases: string
+}
+
+export interface FilterProps {
+  filters: {
+    name: string
+    value: string
+  }[]
+  otherClasses?: string
+  containerClasses?: string
+}
