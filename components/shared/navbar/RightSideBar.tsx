@@ -5,18 +5,18 @@ import RenderTag from '../RenderTag'
 
 function RightSideBar() {
   const topQuestions = [
-    { _id: 1, title: 'Is it only me or the font is bolder than necessary?' },
-    { _id: 2, title: 'Is it only me or the font is bolder than necessary?' },
-    { _id: 3, title: 'Is it only me or the font is bolder than necessary?' },
-    { _id: 4, title: 'Is it only me or the font is bolder than necessary?' },
-    { _id: 5, title: 'Is it only me or the font is bolder than necessary?' },
+    { _id: '1', title: 'Is it only me or the font is bolder than necessary?' },
+    { _id: '2', title: 'Is it only me or the font is bolder than necessary?' },
+    { _id: '3', title: 'Is it only me or the font is bolder than necessary?' },
+    { _id: '4', title: 'Is it only me or the font is bolder than necessary?' },
+    { _id: '5', title: 'Is it only me or the font is bolder than necessary?' },
   ]
   const popularTags = [
-    { _id: 1, name: 'javascript', totalQuestions: 2 },
-    { _id: 2, name: 'next', totalQuestions: 4 },
-    { _id: 3, name: 'css', totalQuestions: 3 },
-    { _id: 4, name: 'react', totalQuestions: 1 },
-    { _id: 5, name: 'typescript', totalQuestions: 5 },
+    { _id: '1', name: 'javascript', totalQuestions: 2 },
+    { _id: '2', name: 'next', totalQuestions: 4 },
+    { _id: '3', name: 'css', totalQuestions: 3 },
+    { _id: '4', name: 'react', totalQuestions: 1 },
+    { _id: '5', name: 'typescript', totalQuestions: 5 },
   ]
   return (
     <section className='custom-scrollbar background-light900_dark200 light-border sticky right-0 top-0 flex h-screen w-[350px] flex-col gap-6 overflow-y-auto border-l p-6 pt-36 shadow-light-300 dark:shadow-none max-xl:hidden'>
