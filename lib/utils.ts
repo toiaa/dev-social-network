@@ -15,6 +15,14 @@ export const getTimeStamp = (date: Date): string => {
   const months = Math.floor(days / 30)
   const years = Math.floor(months / 12)
 
+  /**
+   * Converts a given date into a human-readable time ago format.
+   *
+   * @param {Date} date - The date to be converted.
+   * @returns {string} A string indicating the time difference between the given date and the current time.
+   * The format is "X years ago", "X months ago", "X days ago", "X hours ago", "X minutes * ago", or "X seconds ago" based on the time difference.
+   */
+
   if (years > 0) {
     return `${years} years ago`
   } else if (months > 0) {
@@ -29,7 +37,13 @@ export const getTimeStamp = (date: Date): string => {
     return `${seconds} seconds ago`
   }
 }
-
+/**
+ * Formats a given number into a human-readable abbreviated form.
+ *
+ * @param {number} num - The number to be formatted.
+ * @returns {string} A string representation of the formatted number with abbreviations.
+ * The format is either the original number (if less than 1000), "X.XK" for thousands, "X.* XM" for millions, or "X.XB" for billions.
+ */
 export const formatNumbers = (num: number): string => {
   if (num < 1000) {
     return num.toString()
