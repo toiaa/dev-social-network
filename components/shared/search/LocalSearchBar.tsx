@@ -4,10 +4,10 @@ import { CustomInputProps } from '@/types'
 import Image from 'next/image'
 import React from 'react'
 
-function LocalSearchBar({ route, iconPosition, imgSrc, placeholder, otherClases }: CustomInputProps) {
+function LocalSearchBar({ route, iconPosition, imgSrc, placeholder, otherClasses }: CustomInputProps) {
   return (
     <div
-      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-1 rounded-[10px] px-4 ${otherClases}`}>
+      className={`background-light800_darkgradient flex min-h-[56px] grow items-center gap-1 rounded-[10px] px-4 ${otherClasses}`}>
       {iconPosition === 'left' && (
         <Image src={imgSrc} width={24} height={24} className='cursor-pointer' alt='Search Icon' />
       )}

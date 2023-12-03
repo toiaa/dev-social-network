@@ -48,10 +48,10 @@ export interface BadgeCounts {
 export type BadgeCriteriaType = keyof typeof BADGE_CRITERIA
 
 export interface RenderTagProps {
-  _id: number
+  _id: string
   name: string
-  totalQuestions: number
-  showCount: boolean
+  totalQuestions?: number
+  showCount?: boolean
 }
 
 export interface CustomInputProps {
@@ -59,7 +59,7 @@ export interface CustomInputProps {
   iconPosition: string
   imgSrc: string
   placeholder: string
-  otherClases: string
+  otherClasses: string
 }
 
 export interface FilterProps {
@@ -69,4 +69,38 @@ export interface FilterProps {
   }[]
   otherClasses?: string
   containerClasses?: string
+}
+
+export interface NoResultProps {
+  title: string
+  description: string
+  linkTitle: string
+  link: string
+}
+export interface QuestionCardProps {
+  _id: string
+  title: string
+  tags: {
+    _id: string
+    name: string
+  }[]
+  author: {
+    _id: string
+    name: string
+    picture: string
+  }
+  upvotes: number
+  views: number
+  answers: Array<object>
+  createdAt: Date
+}
+
+export interface MetricProps {
+  imgUrl: string
+  title: string
+  value: string | number
+  alt: string
+  textStyles?: string
+  href?: string
+  isAuthor?: boolean
 }
