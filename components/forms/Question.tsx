@@ -1,8 +1,7 @@
 'use client'
-
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { useRef } from 'react'
+import { set, useForm } from 'react-hook-form'
+import { useRef, useState } from 'react'
 import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -11,9 +10,12 @@ import { questionSchema } from '@/lib/validations'
 import { Editor } from '@tinymce/tinymce-react'
 import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
+import error from 'next/error'
 
+const type: any = 'create'
 export function Question() {
   const editorRef = useRef({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const form = useForm<z.infer<typeof questionSchema>>({
     resolver: zodResolver(questionSchema),
     defaultValues: {
@@ -24,7 +26,16 @@ export function Question() {
   })
 
   const onSubmit = (values: z.infer<typeof questionSchema>) => {
-    console.log(values)
+    setIsSubmitting(true)
+    try {
+      // make an async call to the server (API) -> create a question
+      // contain all form data
+      // navigate back to the home page
+    } catch (e) {
+      console.log(error)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
   const handleInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, field: any) => {
     if (e.key === 'Enter' && field.name === 'tags') {
@@ -172,11 +183,18 @@ export function Question() {
               </FormItem>
             )}
           />
+          <Button
+            type='submit'
+            className='primary-gradient mt-9 min-h-[46px] w-fit !text-light-900'
+            disabled={isSubmitting}>
+            {isSubmitting ? (
+              <>{type === 'edit' ? 'Editing...' : 'Posting...'}</>
+            ) : (
+              <>{type === 'edit' ? 'Edit Question' : 'Ask Question'}</>
+            )}
+          </Button>
         </form>
       </Form>
-      <Button type='submit' className='primary-gradient mt-9 min-h-[46px] px-4 py-3 !text-light-900'>
-        Ask Question
-      </Button>
     </>
   )
 }
