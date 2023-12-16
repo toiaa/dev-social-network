@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const questionSchema = z.object({
+export const QuestionSchema = z.object({
   title: z
     .string()
     .min(5, {
@@ -12,8 +12,8 @@ export const questionSchema = z.object({
     .min(10, {
       message: 'Explanation must be at least 10 characters.',
     })
-    .max(500, {
-      message: 'Excedes the maximum of 500 characters.',
+    .max(2000, {
+      message: 'Excedes the maximum of 2000 characters.',
     }),
 
   tags: z

@@ -7,7 +7,7 @@ export const connectToDatabase = async () => {
   if (isConnected) console.log('Mongo DB is already connected')
   try {
     await mongoose.connect(process.env.MONGODB_URL, {
-      dbName: 'dev-social-ntw',
+      dbName: 'devFlow',
     })
     isConnected = true
     console.log('MongoDB connected')

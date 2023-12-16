@@ -1,24 +1,31 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { useRouter, usePathname } from 'next/navigation'
 import { useRef, useState } from 'react'
 import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { questionSchema } from '@/lib/validations'
+import { QuestionSchema } from '@/lib/validations'
 import { Editor } from '@tinymce/tinymce-react'
 import { Badge } from '@/components/ui/badge'
 import Image from 'next/image'
 import error from 'next/error'
 import { createQuestion } from '@/lib/actions/question.action'
 
-const type: any = 'create'
-export function Question() {
+interface QuestionProps {
+  mongoUserId: string
+  type: string
+}
+
+export function Question({ mongoUserId, type = 'create' }: QuestionProps) {
   const editorRef = useRef({})
+  const router = useRouter()
+  const pathname = usePathname()
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const form = useForm<z.infer<typeof questionSchema>>({
-    resolver: zodResolver(questionSchema),
+  const form = useForm<z.infer<typeof QuestionSchema>>({
+    resolver: zodResolver(QuestionSchema),
     defaultValues: {
       title: '',
       explanation: '',
@@ -26,13 +33,17 @@ export function Question() {
     },
   })
 
-  const onSubmit = async (values: z.infer<typeof questionSchema>) => {
+  const onSubmit = async (values: z.infer<typeof QuestionSchema>) => {
     setIsSubmitting(true)
     try {
-      // make an async call to the server (API) -> create a question
-      await createQuestion({})
-      // contain all form data
-      // navigate back to the home page
+      await createQuestion({
+        title: values.title,
+        content: values.explanation,
+        tags: values.tags,
+        author: JSON.parse(mongoUserId),
+        path: pathname,
+      })
+      router.push('/')
     } catch (e) {
       console.log(error)
     } finally {
