@@ -16,7 +16,7 @@ import { createQuestion } from '@/lib/actions/question.action'
 
 interface QuestionProps {
   mongoUserId: string
-  type: string
+  type?: string
 }
 
 export function Question({ mongoUserId, type = 'create' }: QuestionProps) {
