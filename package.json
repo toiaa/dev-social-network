@@ -12,14 +12,6 @@
     "format": "prettier --check --ignore-path .gitignore .",
     "format:fix": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
-  "lint-staged": {
-    "*.{js, jsx,ts,tsx}": [
-      "eslint --quiet --fix"
-    ],
-    "*.{json,js,ts,jsx,tsx,html}": [
-      "prettier --write --ignore-unknown"
-    ]
-  },
   "dependencies": {
     "@clerk/nextjs": "^4.27.1",
     "@hookform/resolvers": "^3.3.2",
